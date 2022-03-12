@@ -85,35 +85,3 @@
     EKS -->  cluster --> <your cluster> --> configuration --> compute --> Add Node Group 
 	
 	
-	
-		
- 		
-	
-
-     
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	   
-	   
-	   
-	 
-
-
-
-
-
-
-
-
-
-
-
-
-
