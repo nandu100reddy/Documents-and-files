@@ -1,0 +1,44 @@
+
+===================
+java insatallation
+====================
+
+sudo apt update
+
+sudo apt install default-jdk -y
+
+
+jenkins installation
+--------------------
+
+sudo su -
+
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian binary/ > \
+    /etc/apt/sources.list.d/jenkins.list'
+apt-get update
+apt-get install jenkins -y
+
+systemctl enable jenkins
+        (or)
+service jenkins enable
+
+systemctl start jenkins
+
+systemctl status jenkins
+
+
+====================
+      Docker
+====================
+
+sudo apt-get update
+
+sudo apt install docker.io -y
+
+sudo usermod -aG docker ubuntu
+
+sudo usermod -aG docker jenkins
+
+sudo systemctl restart jenkins
+ 

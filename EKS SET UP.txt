@@ -1,0 +1,119 @@
+
+
+
+
+---> Create IAM Role For EKS Cluster.
+  • EKS – Cluster
+   
+  
+--------------------------------------------------------------------------------------------------------------------------
+
+---> Create Dedicated VPC For EKS Cluster. Using CloudFormation.
+     execute below url under	 Amazon s3 url 
+
+     https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+---> Create EKS Cluster
+
+---> Create one Server for Kubectl (or you can create old server also)
+     
+ --> here you need to install Kubectl
+	 
+	  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+	 
+	  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+	 
+	  kubectl version --client
+	  
+---> for getting ".kube/config File" and Execute "AWS commends" need to install AWS CLI 
+
+    note: if AWS CLI is already installed in your server you can skip this step 
+	
+	 aws version
+	 
+	 # installing AWS CLI version 2
+	 
+	   sudo yum install unzip -y 
+	 
+	   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+       unzip awscliv2.zip
+       sudo ./aws/install
+	   
+---> for getting .kube/config File and access EKS programmatically 
+
+     create IAM Role
+	  . AmazonEKSServicePolicy
+	  
+	 # Add above role to Kubectl server 
+	 
+	 Actions --> security --> modify IAM role --> and select here your IAM role 
+
+	 
+	# now we can able to access EKS programmatically 
+	
+	 aws eks list-clusters 
+	 
+	 aws eks update-kubeconfig --name <ClusterName> --region <RegionName>
+	 
+	 kubectl get nodes
+	 
+---> authentication for K8s configring root user
+
+    AWS console --> click on our user name in upside --> my Security Credentials --> Access keys(access keys ID and secret access key) --> Create New Access Key 
+	
+	
+	aws configure 
+	
+	# copy past access ID & key
+	
+	.region name: <region name> 
+	.format: json 
+	
+	kubectl get nodes
+	
+---->Add Workers to Cluster 
+
+     #Create IAM Role For EKS Worker Nodes.
+
+        • AmazonEKSWorkerNodePolicy
+        • AmazonEKS_CNI_Policy
+        • AmazonEC2ContainerRegistryReadOnly
+		
+    EKS -->  cluster --> <your cluster> --> configuration --> compute --> Add Node Group 
+	
+	
+	
+		
+ 		
+	
+
+     
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	   
+	   
+	   
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+

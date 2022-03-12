@@ -1,0 +1,25 @@
+
+==============================
+         Installation Docker
+               Ubuntu
+===============================
+
+sudo apt-get update
+
+sudo apt install docker.io -y
+
+sudo systemctl enable docker
+sudo systemctl start docker
+
+
+docker --version
+
+
+sudo usermod -aG docker $USER
+     or 
+sudo usermod -aG docker ubuntu
+
+# Exit from Current SSH Terminal & SSH(Login) again. Then execute
+docker ps
+
+
